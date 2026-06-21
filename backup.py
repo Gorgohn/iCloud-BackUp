@@ -3,7 +3,7 @@ import pathlib
 import shutil
 import sys
 
-source_icloud = pathlib.Path(r"D:/test_dir")
+source_icloud = pathlib.Path(r"D:/iCloudDrive")
 backup_root = pathlib.Path(r"E:/")
 
 today = datetime.date.today()
