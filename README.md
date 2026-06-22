@@ -2,7 +2,7 @@
 
 This project backs up files from an iCloud folder to an external storage device, such as a hard drive connected to a router.
 
-The script creates monthly backup folders, keeps the original folder structure, copies new files, updates changed files, and skips files that are already up to date.
+The script creates backup folders, keeps the original folder structure, copies new files, updates changed files, and skips files that are already up to date.
 
 ## Why I Built This
 
@@ -12,7 +12,6 @@ This project helps me automate the backup process and gives me a practical way t
 
 ## Features
 
-- Creates monthly backup folders
 - Preserves the original folder structure
 - Copies new files
 - Updates changed files based on modification time
