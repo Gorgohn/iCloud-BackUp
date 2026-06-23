@@ -27,7 +27,8 @@ def run_backup(): # creating function
     copied_files = 0
     skipped_files = 0
     updated_files = 0
-    failed_files = 0
+    failed_update_files = 0
+    failed_copy_files = 0
 
     for new_file in source_icloud.rglob("*"): # getting all files
         if new_file.is_file(): # get path of icloud file and create path in backup
@@ -43,16 +44,18 @@ def run_backup(): # creating function
                         updated_files += 1
                     else: # if backup file is newest, count + 1 skipped file 
                         skipped_files += 1
-                except:
-                    failed_files += 1 
+                except OSError:
+                    failed_update_files += 1
+                    print(f"Error while updating file: {new_file}")
             else:
                 try: # if file is not in backup, copy to backup
                     shutil.copy2(new_file, destination_file)
                     copied_files += 1
-                except:
-                    failed_files += 1
-    return copied_files, updated_files, skipped_files, failed_files # returning values to global
+                except OSError:
+                    failed_copy_files += 1
+                    print(f"Error while copying file: {new_file}")
+    return copied_files, updated_files, skipped_files, failed_update_files, failed_copy_files # returning values to global
 
-copied_files, updated_files, skipped_files, failed_files = run_backup() # getting values and running function
+copied_files, updated_files, skipped_files, failed_update_files, failed_copy_files = run_backup() # getting values and running function
 
-print(f"Backup finished. Copied files: {copied_files}. Updated files: {updated_files}. Skipped files: {skipped_files}. Failed files: {failed_files}")
+print(f"Backup finished. Copied files: {copied_files}. Updated files: {updated_files}. Skipped files: {skipped_files}. Failed update files: {failed_update_files}. Failed copy files: {failed_copy_files}.")
