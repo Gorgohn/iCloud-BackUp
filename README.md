@@ -54,7 +54,7 @@ At the end, the script prints a summary showing how many files were copied, upda
 
 ## Current Status
 
-The project is currently tested with a local test folder.
+The project is tested with a iCloud storage.
 
 The source and backup paths are currently set directly inside `backup.py`.
 
@@ -81,12 +81,3 @@ Before running the script, update the source and backup paths in `backup.py`.
 - shutil
 - datetime
 - sys
-
-## Next Improvements
-
-- Move paths into a configuration file
-- Add logging
-- Add automated scheduling
-- Improve error handling
-- Add a dry-run mode
-- Add tests
