@@ -15,9 +15,10 @@ def get_time():
     year = today.year
     month = today.month
     day = today.day
-    return today, year, month, day
+    current_time = datetime.datetime.now()
+    return today, year, month, day, current_time
 
-today, year, month, day = get_time()
+today, year, month, day, current_time = get_time()
 
 def set_target():
     target = backup_root / str(year) / str(month)
@@ -92,9 +93,9 @@ copied_files, copied_files_list, skipped_files, updated_files, updated_files_lis
 def create_logging_file():
     log_file_path = logging_dir / f"Backup_log_{year}_{month}_{day}.txt"
     with open(log_file_path, "w") as log_file:
-        log_file.write(f"Backup finished.\n\n\nCopied files: {copied_files}\n{copied_files_list}.\n\nUpdated files: {updated_files}\n{updated_files_list}.\n\nSkipped files: {skipped_files}.\n\nFailed update files: {failed_update_files}.\n\nFailed copy files: {failed_copy_files}.\n\nDate: {year}.{month}.{day}")
+        log_file.write(f"Backup finished.\n\n\nCopied files: {copied_files}\n{copied_files_list}.\n\nUpdated files: {updated_files}\n{updated_files_list}.\n\nSkipped files: {skipped_files}.\n\nFailed update files: {failed_update_files}.\n\nFailed copy files: {failed_copy_files}.\n\nDate: {current_time.strftime("%x")} {current_time.strftime("%X")}")
     print("Backup log created\n")
 
 create_logging_file()
 
-print(f"Backup finished.\n\n\nCopied files: {copied_files}\n{copied_files_list}.\n\nUpdated files: {updated_files}\n{updated_files_list}.\n\nSkipped files: {skipped_files}.\n\nFailed update files: {failed_update_files}.\n\nFailed copy files: {failed_copy_files}.\n\nDate: {year}.{month}.{day}")
+print(f"Backup finished.\n\n\nCopied files: {copied_files}\n{copied_files_list}.\n\nUpdated files: {updated_files}\n{updated_files_list}.\n\nSkipped files: {skipped_files}.\n\nFailed update files: {failed_update_files}.\n\nFailed copy files: {failed_copy_files}.\n\nDate: {current_time.strftime("%x")} {current_time.strftime("%X")}")
